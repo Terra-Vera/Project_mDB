@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
 
     addForm.addEventListener('submit', (event) => {
-        event.preventDefault(); // обнулили браузер//
+        event.preventDefault(); // отмена стандартного поведения браузер//
         let newFilm = addInput.value; //сюда запишется значение формы //        
         let favorite = checkbox.checked; //проверка галочки //
         if (newFilm) {
@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             console.log('ERROR!');
         }
-        event.target.reset(); // сбросили форму
+        event.target.reset(); // сбросили форму в исходное положение
     });
     
     const deleteAdv = (arr) => {
@@ -76,19 +76,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const makeChanges = () => {
         promoGenre.textContent = 'драма';
         poster.style.backgroundImage = 'url("img/bg.jpg")';
-    }; 
+    }; // Вставили  жанр и новый постер
 
 
 
-    function creatMovieList(film, parent) { // аргументы - массив куда пойдут фильмы и батька куда толкать элементы//
-        parent.innerHTML = ''; // обнулили батьку в вёрстке//
+    function creatMovieList(film, parent) { // аргументы - массив куда пойдут фильмы и род.эл будут вставлены элементы//
+        parent.innerHTML = ''; // обнулили род.элемнт в вёрстке//
         film.forEach((film, i) => { //цикл добавляющий фильм с его порядковым номером //
             parent.innerHTML += `   
             <li class="promo__interactive-item"> ${i + 1}. ${film}
                 <div class="delete"></div>
             </li>
             `; // вставили вёртву обратно. каждый фильм элемент списка//
-            arrSort(movieDB.movies);
+            arrSort(movieDB.movies); // сортировка по алфавиту
         });
 
         document.querySelectorAll('.delete').forEach((btn, i) => {
@@ -100,8 +100,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
     } 
-    creatMovieList(movieDB.movies, films); // //
+    creatMovieList(movieDB.movies, films); 
     deleteAdv(promoAdv); // удалили рекламные картинки//
-    makeChanges(); // //
+    makeChanges(); 
  
 });
